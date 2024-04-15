@@ -3,7 +3,7 @@ package co.udea.reservation_service.service;
 import co.udea.reservation_service.dto.HabitacionDTO;
 import co.udea.reservation_service.mapper.HabitacionMapper;
 import co.udea.reservation_service.model.Habitacion;
-import co.udea.reservation_service.repository.HabitacionRepository;
+import co.udea.reservation_service.repositoryimpl.HabitacionRepositoryImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class HabitacionService {
-    private final HabitacionRepository habitacionRepository;
+    private final HabitacionRepositoryImpl habitacionRepository;
     private final HabitacionMapper habitacionMapper;
 
     public HabitacionDTO createHabitacion(HabitacionDTO habitacionDTO) {

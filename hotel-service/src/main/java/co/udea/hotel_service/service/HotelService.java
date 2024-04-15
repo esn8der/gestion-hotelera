@@ -3,7 +3,7 @@ package co.udea.hotel_service.service;
 import co.udea.hotel_service.dto.HotelDTO;
 import co.udea.hotel_service.mapper.HotelMapper;
 import co.udea.hotel_service.model.Hotel;
-import co.udea.hotel_service.repository.HotelRepository;
+import co.udea.hotel_service.repositoryimpl.HotelRepositoryImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -15,7 +15,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class HotelService {
-    private final HotelRepository hotelRepository;
+    private final HotelRepositoryImpl hotelRepository;
     private final HotelMapper hotelMapper;
     private final WebClient.Builder webClientBuilder;
 
