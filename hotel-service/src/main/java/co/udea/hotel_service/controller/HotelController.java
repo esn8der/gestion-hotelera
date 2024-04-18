@@ -60,7 +60,7 @@ public class HotelController {
             tags = {"Hotel", "Guardar"})
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Hotel guardado exitosamente")})
-    @PostMapping("")
+    @PostMapping("/create")
     public ResponseEntity<HotelDTO> createHotel(@RequestBody HotelDTO hotelDTO) {
         return ResponseEntity.ok(hotelService.createHotel(hotelDTO));
     }
@@ -71,7 +71,7 @@ public class HotelController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Hotel actualizado exitosamente"),
             @ApiResponse(responseCode = "404", description = "No se encuentra el hotel a actualizar en la base de datos")})
-    @PutMapping("")
+    @PutMapping("/update")
     public ResponseEntity<HotelDTO> updateHotel(@RequestBody HotelDTO hotelDTO) {
         return ResponseEntity.ok(hotelService.updateHotel(hotelDTO));
     }
@@ -82,7 +82,7 @@ public class HotelController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Hotel eliminado exitosamente"),
             @ApiResponse(responseCode = "404", description = "No se encuentra el hotel con el id proporcionado en la base de datos")})
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteHotel(@PathVariable int id) {
         hotelService.deleteById(id);
         return ResponseEntity.noContent().build();
