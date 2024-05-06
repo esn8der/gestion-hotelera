@@ -21,7 +21,6 @@ import java.util.List;
 public class HotelController {
     private final HotelService hotelService;
 
-
     @Operation(
             summary = "Buscar un Hotel en la base de datos con el ID proporcionado y devuelve un objeto de tipo `HotelDTO` que contiene información sobre el Hotel encontrado.",
             tags = {"Hotel"})

@@ -82,7 +82,7 @@ public class HotelService {
     public List<Object> getHabitacionesByHotel(int idHotel) {
         return webClientBuilder.build()
                 .get()
-                .uri("http://localhost:8081/habitacion/hotel/" + idHotel)
+                .uri("http://localhost:8080/habitacion/hotel/" + idHotel)
                 .retrieve()
                 .bodyToFlux(Object.class)
                 .collectList()
