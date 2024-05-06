@@ -46,8 +46,8 @@ public class HotelService {
     public HotelDTO findByNombre(String nombre) throws IllegalAccessException {
         Optional<Hotel> optionalHotel = hotelRepository.findByNombreIgnoreCase(nombre);
         if (optionalHotel.isEmpty()) {
-            log.error("Hotel not found");
-            throw new IllegalAccessException("Hotel not found");
+            log.error("Hotels not founds");
+            throw new IllegalAccessException("Hotels not found");
         } else {
             log.info("Hotel found");
             return hotelMapper.toHotelDTO(optionalHotel.get());
@@ -82,7 +82,7 @@ public class HotelService {
     public List<Object> getHabitacionesByHotel(int idHotel) {
         return webClientBuilder.build()
                 .get()
-                .uri("http://localhost:8080/habitacion/hotel/" + idHotel)
+                .uri("lb://reservation-service/habitacion/hotel/" + idHotel)
                 .retrieve()
                 .bodyToFlux(Object.class)
                 .collectList()
