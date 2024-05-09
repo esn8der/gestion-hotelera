@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,6 +40,7 @@ public class HotelController {
             @ApiResponse(responseCode = "200", description = "Hoteles encontrados exitosamente"),
             @ApiResponse(responseCode = "404", description = "No se encuentran hoteles en la base de datos")})
     @GetMapping("/getAll")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<List<HotelDTO>> getHotels() throws IllegalAccessException {
         return ResponseEntity.ok(hotelService.getHoteles());
     }
@@ -94,6 +96,7 @@ public class HotelController {
             @ApiResponse(responseCode = "200", description = "Habitaciones encontradas exitosamente"),
             @ApiResponse(responseCode = "404", description = "No se encuentran habitaciones para este hotel en la base de datos")})
     @GetMapping("/habitaciones/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<Object>> getHabitacionesByHotel(@PathVariable int id) {
         return ResponseEntity.ok(hotelService.getHabitacionesByHotel(id));
     }
