@@ -17,7 +17,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Configuration
 @EnableWebSecurity
@@ -55,9 +54,9 @@ class KeycloakRealmRoleConverter implements Converter<Jwt, Collection<GrantedAut
 
         final Map<String, List<String>> realmAccess = (Map<String, List<String>>) jwt.getClaims().get("realm_access");
 
-        return realmAccess.get("roles").stream()
+        return List.copyOf(realmAccess.get("roles").stream()
                 .map(roleName -> "ROLE_" + roleName)
                 .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
+                .toList());
     }
 }

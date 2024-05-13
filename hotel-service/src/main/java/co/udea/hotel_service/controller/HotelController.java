@@ -5,6 +5,7 @@ import co.udea.hotel_service.service.HotelService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -28,6 +29,7 @@ public class HotelController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Hotel encontrado exitosamente"),
             @ApiResponse(responseCode = "404", description = "No se encuentra el hotel con el id proporcionado en la base de datos")})
+    @SecurityRequirement(name = "security_auth")
     @GetMapping("{id}")
     public ResponseEntity<HotelDTO> getHotel(@PathVariable int id) throws IllegalAccessException {
         return ResponseEntity.ok(hotelService.getHotel(id));
