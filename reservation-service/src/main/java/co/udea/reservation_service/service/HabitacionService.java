@@ -19,13 +19,14 @@ public class HabitacionService {
     private final HabitacionRepositoryImpl habitacionRepository;
     private final HabitacionMapper habitacionMapper;
     private final Logger log = LoggerFactory.getLogger(HabitacionService.class);
+
+
     public HabitacionDTO createHabitacion(HabitacionDTO habitacionDTO) {
         Habitacion habitacion = habitacionMapper.toHabitacion(habitacionDTO);
         habitacion = habitacionRepository.save(habitacion);
         log.info("Creando habitación: {}", habitacion.getTipo());
         return habitacionMapper.toHabitacionDTO(habitacion);
     }
-
 
     public HabitacionDTO getHabitacion(int id) throws IllegalAccessException {
         Optional<Habitacion> optionalHabitacion = habitacionRepository.findById(id);
@@ -77,7 +78,7 @@ public class HabitacionService {
     public void deleteHabitacion(int id) {
         Optional<Habitacion> habtiacion = habitacionRepository.findById(id);
         if(habtiacion.isEmpty()) {
-            log.error("No se encontró la habitación con ID: {}", id);
+            log.error("No se encontró la habitación de ID: {}", id);
             throw new IllegalArgumentException("No se encontró la habitación con ID: " + id);
         }else {
             log.info("Eliminando habitación con ID: {}", id);

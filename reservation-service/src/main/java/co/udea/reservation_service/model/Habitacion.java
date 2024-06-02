@@ -18,4 +18,19 @@ public class Habitacion {
     private int precio;
     private int idEstado;
     private int idHotel;
+
+    public Habitacion() {
+
+    }
+
+    public Habitacion(int i, String singleRoom, int i1, int i2, int i3, int i4, int i5) {
+        this.id = i;
+        this.tipo = singleRoom;
+        this.camas = i1;
+        this.capacidad = i2;
+        this.precio = i3;
+        this.idEstado = i4;
+        this.idHotel = i5;
+    }
+
 }

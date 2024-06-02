@@ -1,6 +1,7 @@
 package co.udea.reservation_service.dto;
 
 
+import co.udea.reservation_service.model.Habitacion;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class HabitacionDTO {
+public class HabitacionDTO extends Habitacion {
     private int id;
     private String tipo;
     private int camas;
